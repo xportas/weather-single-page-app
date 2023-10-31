@@ -28,11 +28,22 @@ $(document).ready(function(){
             },
         })
 
-    }
+    } 
 
     btn.on('click', function(event){
         event.preventDefault();
         searchCity(input.val())
     });
+
+    //CURRENT LOCATION: ver cómo funciona navigator.geolocation
+    //genera una función que coja la localización actual del usuario
+    // function getCurrentLocation(){
+    //     if (navigator.geolocation){
+    //         navigator.geolocation.getCurrentPosition(showPosition);
+    //     } else {
+    //         alert("Geolocation is not supported by this browser.");
+    //     }
+    // }
+    
 
 });
