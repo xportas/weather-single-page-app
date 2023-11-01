@@ -1,8 +1,10 @@
 $(document).ready(function () {
 
     var apiCurrentUrl = "https://api.openweathermap.org/data/2.5/weather?";
-    var apiForecastedUrl = "api.openweathermap.org/data/2.5/forecast?";
+    var apiForecastedUrl = "https://api.openweathermap.org/data/2.5/forecast?";
     var apiKey = "0ad2ed4b77ee83cd4eddf03827379892";
+
+    var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     var input = $('#location-input')
     var btnSearch = $('#btn-search')
@@ -39,16 +41,27 @@ $(document).ready(function () {
             success: function (response) {
                 //vemos la respuesta de la api por la consola para depurar
                 console.log(response);
+                
+                let currentDate = new Date();
 
-
-                /*for (let i = 0; i < response.length; i++) {
-                    
-                    //TODO VALIDACIONES
-                    
-                    if (response[i].name == city) {
-                        $('#city-weather-content').append('<div class="row"><div class="col-9"><p>' + TOCHANGE + '</p></div><div class="col-3"><p>' + TOCHANGE + '</p></div></div>');
+                let i = 0;
+                let dayCounter = 1;
+                goOutLoop = false;
+                while (i < response.list.length && goOutLoop != true) {
+                    let forecastedDate = new Date(response.list[i].dt_txt);
+                    //Validation: if the forecasted date is the same as the current date + n<4 day and the hour is 15 or 3 it get the data
+                    if ((forecastedDate.getDate() == (currentDate.getDate() + dayCounter)) && (forecastedDate.getHours() == (15 || 3))) {
+                        dayCounter++;
+                        // TODO: corregir el fallo de que puede ser día 31 y volver a empezar el mes                        
+                        //TODO: cogemos los datos que nos interesa de cada uno de los díasy luego hacemos append con el código de abajo para ir metiendo el tiempo pronosticado debajo.
                     }
-                }*/
+                    if (dayCounter > 5) {
+                        goOutLoop = true;
+                    }
+                }
+
+
+                $('#city-weather-content').append('<div class="row"><div class="col-9"><p>' + WEEKDAY + '</p></div><div class="col-3"><p>' + MIN-MAX + '</p></div></div>');
             },
             error: function (error) {
                 console.error("Error: ", error);
