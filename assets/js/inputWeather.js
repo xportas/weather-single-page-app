@@ -41,14 +41,14 @@ $(document).ready(function () {
                 console.log(response);
 
 
-                for (let i = 0; i < response.length; i++) {
+                /*for (let i = 0; i < response.length; i++) {
                     
                     //TODO VALIDACIONES
                     
                     if (response[i].name == city) {
                         $('#city-weather-content').append('<div class="row"><div class="col-9"><p>' + TOCHANGE + '</p></div><div class="col-3"><p>' + TOCHANGE + '</p></div></div>');
                     }
-                }
+                }*/
             },
             error: function (error) {
                 console.error("Error: ", error);
