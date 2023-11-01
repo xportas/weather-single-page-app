@@ -1,26 +1,17 @@
 $(document).ready(function () {
 
-    var apiCurrentByNameUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
-    var apiCurrentByLatLonUrl = "https://api.openweathermap.org/data/2.5/weather?";
-    var api5DaysByNameUrl = "api.openweathermap.org/data/2.5/forecast?q=";
-    var api5DaysByLatLonUrl = "api.openweathermap.org/data/2.5/forecast?";
+    var apiCurrentUrl = "https://api.openweathermap.org/data/2.5/weather?";
+    var apiForecastedUrl = "api.openweathermap.org/data/2.5/forecast?";
     var apiKey = "0ad2ed4b77ee83cd4eddf03827379892";
 
     var input = $('#location-input')
     var btnSearch = $('#btn-search')
     var aCurrent = $('#a-current-city')
 
-    /* POSIBLE NECESIDAD PARA VALIDAR
-    var currentDate = new Date();
-    var currentDay = currentDate.getDate();
-    var currentMonth = currentDate.getMonth() + 1;
-    var currentYear = currentDate.getFullYear();
-    var formatedDate = currentYear + "-" + currentMonth + "-" + currentDay;*/
-
     function searchCityWeatherByName(city) {
         $.ajax({ // current weather call
             type: "GET",
-            url: apiCurrentByNameUrl + city + "&appid=" + apiKey,
+            url: apiCurrentUrl + "q=" + city + "&appid=" + apiKey,
             dataType: "json",
             success: function (response) {
                 $('#city-weather-content').empty();
@@ -29,11 +20,11 @@ $(document).ready(function () {
                 console.log(response)
 
                 let name = response.name;
-                let icon = response.weather.icon;
-                let tempMin = response.main.temp_min;
-                let tempMax = response.main.temp_max;
+                let icon = response.weather[0].icon + '.png';
+                let temp = Math.round(response.main.temp - 273);
+                let humidity = response.main.humidity;
 
-                $('#city-weather-content').append('<div class="row mt-3"><h2 class="d-flex justify-content-center">' + name + '</h2></div><div class="row col-9"><img src="assets/images/' + icon + '.png" alt="current-weather-img"></div><div class="row"><p class="d-flex justify-content-center">Min: ' + tempMin + 'º  -  Max: ' + tempMax + 'º</p></div>');
+                $('#city-weather-content').append('<div class="row mt-3"><h2 class="d-flex justify-content-center">' + name + '</h2></div><div class="row col-9"><img src="assets/images/' + icon + '" alt="current-weather-img"></div><div class="row"><p class="d-flex justify-content-center">Temp: ' + temp + 'ºC | Humidity: ' + humidity + '%</p></div>');
             },
             error: function (error) {
                 console.error("Error: ", error);
@@ -43,7 +34,7 @@ $(document).ready(function () {
 
         $.ajax({ // forecasted weather call
             type: "GET",
-            url: api5DaysByNameUrl + city + "&appid=" + apiKey,
+            url: apiForecastedUrl + "q=" + city + "&appid=" + apiKey,
             dataType: "json",
             success: function (response) {
                 //vemos la respuesta de la api por la consola para depurar
@@ -66,11 +57,11 @@ $(document).ready(function () {
     }
 
     function searchCityWeatherByCurrentLocation(position) {
-        let lat = position.coord.lat;
+        let lat = position.coord.lat; //falla aquí
         let lon = position.coord.lon;
         $.ajax({ // current weather call
             type: "GET",
-            url: apiCurrentByLatLonUrl + 'lat=' + lat + '&lon=' + lon + "&appid=" + apiKey,
+            url: apiCurrentUrl + 'lat=' + lat + '&lon=' + lon + "&appid=" + apiKey,
             dataType: "json",
             success: function (response) {
                 $('#city-weather-content').empty();
@@ -79,11 +70,11 @@ $(document).ready(function () {
                 console.log(response)
 
                 let name = response.name;
-                let icon = response.weather.icon;
-                let tempMin = response.main.temp_min;
-                let tempMax = response.main.temp_max;
+                let icon = response.weather[0].icon + '.png';
+                let temp = Math.round(response.main.temp - 273);
+                let humidity = response.main.humidity;
 
-                $('#city-weather-content').append('<div class="row mt-3"><h2 class="d-flex justify-content-center">' + name + '</h2></div><div class="row col-9"><img src="assets/images/' + icon + '.png" alt="current-weather-img"></div><div class="row"><p class="d-flex justify-content-center">Min: ' + tempMin + 'º  -  Max: ' + tempMax + 'º</p></div>');
+                $('#city-weather-content').append('<div class="row mt-3"><h2 class="d-flex justify-content-center">' + name + '</h2></div><div class="row col-9"><img src="assets/images/' + icon + '" alt="current-weather-img"></div><div class="row"><p class="d-flex justify-content-center">Temp: ' + temp + 'ºC | Humidity: ' + humidity + '%</p></div>');
             },
             error: function (error) {
                 console.error("Error: ", error);
@@ -99,8 +90,6 @@ $(document).ready(function () {
     function errorGetCurrentLocation() {
             alert("Unable to retrieve your location for weather");
         }
-
-
 
     //function to get user current location
     function getCurrentLocation() {
