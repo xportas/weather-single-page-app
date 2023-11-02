@@ -104,9 +104,48 @@ $(document).ready(function () {
         })
 
 
-        // TODO : HACER CALL PARA LA PREVISION DE 5 DIAS
-        
+        $.ajax({ // forecasted weather call
+            type: "GET",
+            url: apiForecastedUrl + 'lat=' + lat + '&lon=' + lon + "&appid=" + apiKey,
+            dataType: "json",
+            success: function (response) {
+                //vemos la respuesta de la api por la consola para depurar
+                console.log(response);
+                
+                let currentDate = new Date();
 
+                let i = 0;
+                let dayCounter = 1;
+                goOutLoop = false;
+                while (i < response.list.length && goOutLoop != true) {
+                    let forecastedDate = new Date(response.list[i].dt_txt);
+                    let tempMax = -1000;
+                    let tempMin = 1000;
+                    //Validation: if the forecasted date is the same as the current date + n<4 day it gets the weather data
+                    if ((forecastedDate.getDate() == (currentDate.getDate() + dayCounter)) || ((forecastedDate.getMonth() == currentDate.getMonth()+1) && (forecastedDate.getDate() <= 4))) {
+                        let j = i+1;
+                        while (j<response.list.length && forecastedDate.getDate() == new Date(response.list[j].dt_txt).getDate()) {
+                            if (tempMax < response.list[j].main.temp_max) {
+                                tempMax = response.list[j].main.temp_max;
+                            }
+                            if (tempMin > response.list[j].main.temp_min) {
+                                tempMin = response.list[j].main.temp_min;
+                            }
+                            j++;
+                        }
+                        $('#city-weather-content').append('<div class="row"><div class="col-7"><p>' + weekDays[forecastedDate.getDay()] + '</p></div><div class="col-5"><p>' + Math.round(tempMax - 273) + 'ºC | ' + Math.round(tempMin - 273) + 'ºC</p></div></div>');
+                        dayCounter++;
+                    }
+                    if (dayCounter > 5) {
+                        goOutLoop = true;
+                    }
+                    i++;
+                }
+            },
+            error: function (error) {
+                console.error("Error: ", error);
+            },
+        })
     }
 
     function errorGetCurrentLocation() {
