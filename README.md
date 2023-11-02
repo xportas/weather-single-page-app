@@ -2,6 +2,7 @@
 WeatherSPA es una aplicación del tiempo desarrollada como una Single Page Application (SPA) con un diseño mobile first para ofrecerte la información meteorológica de manera rápida y de forma sencilla. Con esta aplicación, puedes obtener pronósticos precisos del tiempo para cualquier ubicación del mundo en cualquier momento.
 
 **Características**
+
 **Interfaz Intuitiva:** La aplicación presenta una interfaz sencilla y fácil de usar que te permite obtener la información meteorológica que necesitas con solo unos pocos clics o toques en la pantalla.
 
 **Pronóstico Preciso:** Utiliza datos meteorológicos actualizados para proporcionarte pronósticos precisos y confiables para cualquier ubicación. Nunca más te sorprenderás por el clima inesperado.
