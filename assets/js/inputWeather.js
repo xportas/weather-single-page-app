@@ -12,6 +12,7 @@ $(document).ready(function () {
     var divLogo = $('#div-logo')
     var divCityWeather = $('#div-cityweather')
     var home = $('#home')
+    var homeTit = $('#home-tit')
 
     function searchCityWeatherByName(city) {
         $.ajax({ // current weather call
@@ -182,6 +183,12 @@ $(document).ready(function () {
     });
 
     home.on('click', function (event) {
+        event.preventDefault();
+        divLogo.removeClass('d-none');
+        divCityWeather.addClass('d-none');
+    });
+
+    homeTit.on('click', function (event) {
         event.preventDefault();
         divLogo.removeClass('d-none');
         divCityWeather.addClass('d-none');
