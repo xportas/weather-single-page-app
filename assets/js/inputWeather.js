@@ -9,6 +9,9 @@ $(document).ready(function () {
     var input = $('#location-input')
     var btnSearch = $('#btn-search')
     var aCurrent = $('#a-current-city')
+    var divLogo = $('#div-logo')
+    var divCityWeather = $('#div-cityweather')
+    var home = $('#home')
 
     function searchCityWeatherByName(city) {
         $.ajax({ // current weather call
@@ -166,11 +169,22 @@ $(document).ready(function () {
     btnSearch.on('click', function (event) {
         event.preventDefault();
         searchCityWeatherByName(input.val());
+        input.val('');
+        divLogo.addClass('d-none');
+        divCityWeather.removeClass('d-none');
     });
 
     aCurrent.on('click', function (event) {
         event.preventDefault();
         getCurrentLocation();
+        divLogo.addClass('d-none');
+        divCityWeather.removeClass('d-none');
+    });
+
+    home.on('click', function (event) {
+        event.preventDefault();
+        divLogo.removeClass('d-none');
+        divCityWeather.addClass('d-none');
     });
 
 });
