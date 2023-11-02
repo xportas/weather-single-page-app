@@ -49,19 +49,28 @@ $(document).ready(function () {
                 goOutLoop = false;
                 while (i < response.list.length && goOutLoop != true) {
                     let forecastedDate = new Date(response.list[i].dt_txt);
-                    //Validation: if the forecasted date is the same as the current date + n<4 day and the hour is 15 or 3 it gets the data
-                    if ((forecastedDate.getDate() == (currentDate.getDate() + dayCounter)) && (forecastedDate.getHours() == (15 || 3))) {
+                    let tempMax = -1000;
+                    let tempMin = 1000;
+                    //Validation: if the forecasted date is the same as the current date + n<4 day it gets the weather data
+                    if ((forecastedDate.getDate() == (currentDate.getDate() + dayCounter)) || ((forecastedDate.getMonth() == currentDate.getMonth()+1) && (forecastedDate.getDate() <= 4))) {
+                        let j = i+1;
+                        while (j<response.list.length && forecastedDate.getDate() == new Date(response.list[j].dt_txt).getDate()) {
+                            if (tempMax < response.list[j].main.temp_max) {
+                                tempMax = response.list[j].main.temp_max;
+                            }
+                            if (tempMin > response.list[j].main.temp_min) {
+                                tempMin = response.list[j].main.temp_min;
+                            }
+                            j++;
+                        }
+                        $('#city-weather-content').append('<div class="row"><div class="col-7"><p>' + weekDays[forecastedDate.getDay()] + '</p></div><div class="col-5"><p>' + Math.round(tempMax - 273) + 'ºC | ' + Math.round(tempMin - 273) + 'ºC</p></div></div>');
                         dayCounter++;
-                        // TODO: corregir el fallo de que puede ser día 31 y volver a empezar el mes                        
-                        //TODO: cogemos los datos que nos interesa de cada uno de los díasy luego hacemos append con el código de abajo para ir metiendo el tiempo pronosticado debajo.
                     }
                     if (dayCounter > 5) {
                         goOutLoop = true;
                     }
+                    i++;
                 }
-
-
-                $('#city-weather-content').append('<div class="row"><div class="col-9"><p>' + WEEKDAY + '</p></div><div class="col-3"><p>' + MIN-MAX + '</p></div></div>');
             },
             error: function (error) {
                 console.error("Error: ", error);
