@@ -1,5 +1,5 @@
 # WeatherSPA: Aplicación del Tiempo Single Page
-WeatherSPA es una aplicación del tiempo desarrollada como una Single Page Application (SPA) con un diseño mobile first para ofrecerte la información meteorológica de manera rápida y de forma sencilla. Con esta aplicación, puedes obtener pronósticos precisos del tiempo para cualquier ubicación del mundo en cualquier momento.
+WeatherSPA es una aplicación del tiempo desarrollada como una Single Page Application (SPA) con un diseño mobile first para ofrecerte la información meteorológica de manera rápida y de forma sencilla. Con esta aplicación, puedes obtener pronósticos precisos del tiempo para cualquier ubicación del mundo en cualquier momento. Las tecnologías empleadas en el proyecto son Bootstrap 5, JQuery, Ajax, HTML5, CSS3.
 
 **Características**
 
@@ -14,6 +14,7 @@ WeatherSPA es una aplicación del tiempo desarrollada como una Single Page Appli
 **Gráficos e Ilustraciones:** Además de los datos básicos del clima, la aplicación también presenta gráficos e ilustraciones que te ayudarán a comprender mejor las tendencias meteorológicas.
 
 **Cómo Funciona**
+
 **Abrir la Aplicación:** Al cargar la aplicación en tu navegador o dispositivo móvil, serás recibido con la página de inicio que muestra la api consumida para la obtención de los datos meteorológicos.
 
 **Buscar una Ubicación:** Si deseas obtener el pronóstico para otra ubicación, puedes utilizar la barra de búsqueda en la parte superior de la página. Ingresa el nombre de la ciudad o el país que te interesa y presiona "Buscar". La aplicación te mostrará el pronóstico del tiempo para esa ubicación.
