@@ -49,7 +49,7 @@ $(document).ready(function () {
                 goOutLoop = false;
                 while (i < response.list.length && goOutLoop != true) {
                     let forecastedDate = new Date(response.list[i].dt_txt);
-                    //Validation: if the forecasted date is the same as the current date + n<4 day and the hour is 15 or 3 it get the data
+                    //Validation: if the forecasted date is the same as the current date + n<4 day and the hour is 15 or 3 it gets the data
                     if ((forecastedDate.getDate() == (currentDate.getDate() + dayCounter)) && (forecastedDate.getHours() == (15 || 3))) {
                         dayCounter++;
                         // TODO: corregir el fallo de que puede ser día 31 y volver a empezar el mes                        
@@ -70,8 +70,8 @@ $(document).ready(function () {
     }
 
     function searchCityWeatherByCurrentLocation(position) {
-        let lat = position.coord.lat; //falla aquí
-        let lon = position.coord.lon;
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
         $.ajax({ // current weather call
             type: "GET",
             url: apiCurrentUrl + 'lat=' + lat + '&lon=' + lon + "&appid=" + apiKey,
