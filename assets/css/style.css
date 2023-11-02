@@ -19,3 +19,17 @@ h2 {
 p.navbar-brand {
     font-size: 1.5em;
 }
+
+#a-current-city {
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+#a-current-city:hover, 
+#home:hover {
+    cursor: pointer;
+}
+
+#a-current-city:hover {
+    background-color: #b76e00;
+}
