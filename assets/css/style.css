@@ -11,3 +11,11 @@
 h2 {
     font-family:monospace;
 }
+
+#home {
+    width: 60px;
+}
+
+p.navbar-brand {
+    font-size: 1.5em;
+}
