@@ -22,4 +22,5 @@ WeatherSPA es una aplicación del tiempo desarrollada como una Single Page Appli
 **Ver Detalles:** Una vez que hayas seleccionado una ubicación, la aplicación te mostrará detalles sobre el clima actual, incluyendo la temperatura, la humedad, y el pronóstico extendido para los próximos días.
 
 **Boceto de diseño inicial:**
+
 ![Idea de diseño inicial](https://github.com/xportas/weather-single-page-app/blob/main/assets/images/boceto%20app.png)
