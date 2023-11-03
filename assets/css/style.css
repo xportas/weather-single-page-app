@@ -1,35 +1,35 @@
 * {
     box-sizing: border-box;
     font-family: 'Roboto Slab', sans-serif;
-    font-weight: bolder;
+    font-weight: bolder
 }
 
 #location-input {
-    font-weight: bolder;
+    font-weight: bolder
 }
 
 h2 {
-    font-family:monospace;
+    font-family: monospace
 }
 
 #home {
-    width: 60px;
+    width: 60px
 }
 
 p.navbar-brand {
-    font-size: 1.5em;
+    font-size: 1.5em
 }
 
 #a-current-city {
     padding-left: 15px;
-    border-radius: 5px;
-}
-
-#a-current-city:hover, 
-#home:hover {
-    cursor: pointer;
+    border-radius: 5px
 }
 
 #a-current-city:hover {
-    background-color: #b76e00;
+    cursor: pointer;
+    background-color: #b76e00
+}
+
+#home:hover {
+    cursor: pointer
 }
