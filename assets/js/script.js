@@ -20,6 +20,8 @@ $(document).ready(function () {
             success: successCallback,
             error: function (error) {
                 console.error("Error: ", error);
+                divLogo.removeClass('d-none');
+                divCityWeather.addClass('d-none');
             },
         });
     }
