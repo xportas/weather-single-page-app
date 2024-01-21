@@ -1,5 +1,3 @@
-**Readme.txt**
-
 # OpenWeather Web Application
 
 ## Overview
