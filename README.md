@@ -1,22 +1,51 @@
-# WeatherSPA: Aplicación del Tiempo Single Page
-WeatherSPA es una aplicación del tiempo desarrollada como una Single Page Application (SPA) con un diseño mobile first para ofrecerte la información meteorológica de manera rápida y de forma sencilla. Con esta aplicación, puedes obtener pronósticos precisos del tiempo para cualquier ubicación del mundo en cualquier momento. Las tecnologías empleadas en el proyecto son Bootstrap 5, JQuery, Ajax, SCSS, HTML5, CSS3.
+**Readme.txt**
 
-**Características**
+# OpenWeather Web Application
 
-**Interfaz Intuitiva:** La aplicación presenta una interfaz sencilla y fácil de usar que te permite obtener la información meteorológica que necesitas con solo unos pocos clics o toques en la pantalla.
+## Overview
 
-**Pronóstico Preciso:** Utiliza datos meteorológicos actualizados para proporcionarte pronósticos precisos y confiables para cualquier ubicación. Nunca más te sorprenderás por el clima inesperado.
+The OpenWeather web application is a simple weather forecasting tool that allows users to check the current weather and 5-day forecast for a specific city or their current location. The application uses the OpenWeatherMap API to fetch weather data.
 
-**Diseño Mobile First:** Diseñado teniendo en cuenta la experiencia del usuario en dispositivos móviles. La aplicación es completamente receptiva y se adapta a cualquier tamaño de pantalla, desde teléfonos inteligentes hasta tabletas.
+## Features
 
-**Búsqueda Rápida:** Con nuestra función de búsqueda, puedes encontrar fácilmente el clima para cualquier ciudad, país o lugar del mundo. Solo tienes que escribir el nombre y la aplicación te mostrará la información en tiempo real y el pronóstico para los próximos 5 días.
+1. **Search by City**: Users can enter the name of a city in the search bar and click the "Search" button to view the current weather and 5-day forecast for that city.
 
-**Gráficos e Ilustraciones:** Además de los datos básicos del clima, la aplicación también presenta gráficos e ilustraciones que te ayudarán a comprender mejor las tendencias meteorológicas.
+2. **Current Location**: Users can click on the "Current location" link to retrieve weather information based on their current location using the browser's geolocation feature.
 
-**Cómo Funciona**
+3. **Responsive Design**: The application is designed to be responsive and works well on various devices, including desktops, tablets, and mobile phones.
 
-**Abrir la Aplicación:** Al cargar la aplicación en tu navegador o dispositivo móvil, serás recibido con la página de inicio que muestra la api consumida para la obtención de los datos meteorológicos.
+## Technologies Used
 
-**Buscar una Ubicación:** Si deseas obtener el pronóstico para otra ubicación, puedes utilizar la barra de búsqueda en la parte superior de la página. Ingresa el nombre de la ciudad o el país que te interesa y presiona "Buscar". La aplicación te mostrará el pronóstico del tiempo para esa ubicación.
+- **HTML**: The application's structure is built using HTML to create the webpage.
 
-**Ver Detalles:** Una vez que hayas seleccionado una ubicación, la aplicación te mostrará detalles sobre el clima actual, incluyendo la temperatura, la humedad, y el pronóstico extendido para los próximos días.
+- **CSS (Bootstrap)**: Bootstrap 5.3.2 is used for styling, providing a responsive and visually appealing design.
+
+- **JavaScript (jQuery)**: The application uses JavaScript, particularly the jQuery library, to handle user interactions and make asynchronous API requests.
+
+- **OpenWeatherMap API**: The OpenWeatherMap API is utilized to fetch both current weather and 5-day forecast data.
+
+## How It Works
+
+1. **City Search**: Users can enter the name of a city in the search input and click the "Search" button. The application will then make an API call to OpenWeatherMap to retrieve and display the current weather and 5-day forecast for the specified city.
+
+2. **Current Location**: Clicking on the "Current location" link triggers a geolocation request. If successful, the application makes API calls to OpenWeatherMap using the obtained latitude and longitude to display the current weather and 5-day forecast for the user's current location.
+
+3. **Navigation**: The navigation bar provides links to the home page, current location, and a search bar for city-based weather searches.
+
+## Usage
+
+1. Clone the repository or download the source code.
+
+2. Open the `index.html` file in a web browser.
+
+3. Enter a city name in the search bar and click "Search," or click "Current location" to get weather information based on your current location.
+
+## Additional Information
+
+- The application is built to be user-friendly and visually appealing, providing an intuitive interface for users to interact with.
+
+- Developers can extend the functionality or customize the design by modifying the JavaScript code, adding new features, or adjusting the styling.
+
+- Ensure that an internet connection is available as the application relies on making API calls to OpenWeatherMap.
+
+- The OpenWeatherMap API key used in the application is provided in the JavaScript code. Developers should consider using their own API key for a production environment.
